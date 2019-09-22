@@ -5,7 +5,11 @@ import com.rabbitmq.client.*;
 
 import java.io.IOException;
 
-public class DirectConsumer {
+/**
+ * 多重绑定
+ * 多个路由键绑定到同一个队列中
+ */
+public class MutilBindConsumer {
 
     public static void main(String[] args) throws Exception {
         // 创建连接
@@ -15,12 +19,13 @@ public class DirectConsumer {
         // 在信道中设置交换器
         channel.exchangeDeclare(DirectProducer.EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
 
-        String queueName  = "queue-king";
+        // 生成一个随机队列名称
+        String queueName  = "route-king";
         channel.queueDeclare(queueName, false, false,false, null);
         // 队列绑定路由键
-        String routeKey = "king";
-        channel.queueBind(queueName, DirectProducer.EXCHANGE_NAME, routeKey);
-
+        for (String routeKey: DirectProducer.ROUTE_KEYS) {
+            channel.queueBind(queueName, DirectProducer.EXCHANGE_NAME, routeKey);
+        }
         System.out.println("waiting for message...");
 
         // 声明一个消费者
