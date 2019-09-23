@@ -9,7 +9,7 @@ import java.io.IOException;
  * 不管路由键存在不存在
  * 都能收到消息
  */
-public class ConsumerAllAMessage {
+public class ConsumerKingMessage {
 
     public static void main(String[] args) throws Exception {
         // 创建连接
@@ -19,11 +19,11 @@ public class ConsumerAllAMessage {
         // 在信道中设置交换器
         channel.exchangeDeclare(TopicProducer.EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
 
-        String queueName  = "queue-topic-all-a";
+        String queueName  = "queue-king-topic-all";
         channel.queueDeclare(queueName, false, false,false, null);
         // 设置一个不存在的路由键
 
-        channel.queueBind(queueName, TopicProducer.EXCHANGE_NAME, "#.A");
+        channel.queueBind(queueName, TopicProducer.EXCHANGE_NAME, "king.#");
 
         System.out.println("waiting for message...");
 

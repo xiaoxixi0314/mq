@@ -20,7 +20,7 @@ public class ConsumerAllMessage {
         // 在信道中设置交换器
         channel.exchangeDeclare(TopicProducer.EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
 
-        String queueName  = "queue-king";
+        String queueName  = "queue-topic-all";
         channel.queueDeclare(queueName, false, false,false, null);
         // 设置一个不存在的路由键
 
