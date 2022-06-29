@@ -33,7 +33,7 @@
 		<alibaba.druid.version>1.1.10</alibaba.druid.version>
 		<alibaba.fastjson.version>1.2.45</alibaba.fastjson.version>
 		<springfox.swagger2.version>2.7.0</springfox.swagger2.version>
-		<poi.version>3.15</poi.version>
+		<poi.version>4.1.1</poi.version>
 		<commons.email.version>1.5</commons.email.version>
 		<javax.mail.version>1.6.2</javax.mail.version>
 	</properties>
